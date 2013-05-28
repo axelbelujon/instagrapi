@@ -1,0 +1,5 @@
+aku_insta:
+    resource: "@AkuInstaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
