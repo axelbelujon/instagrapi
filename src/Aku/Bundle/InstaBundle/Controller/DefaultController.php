@@ -14,6 +14,8 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+        $instagram = $this->get('aku.instagram');
+
         return array();
     }
 }

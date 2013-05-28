@@ -17,4 +17,13 @@
         </service>
     </services>
     -->
+    <parameters>
+        <parameter key="aku.instagram.class">Aku\Bundle\InstaBundle\Service\Instagram</parameter>
+    </parameters>
+
+    <services>
+        <service id="aku.instagram" class="%aku.instagram.class%">
+
+        </service>
+    </services>
 </container>
