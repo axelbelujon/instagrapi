@@ -93,9 +93,22 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+html,body {
+    height: 100%;
+}
 
+body {
+    width:100%;
+    background: #f8d65d url('../img/background-texture.png');
+    color: #493b35;
+}
 
-
+#container {
+    width: 960px;
+    min-height: 763px;
+    margin: auto;
+    background: url('../img/halo.png') no-repeat center center;
+}
 
 
 
