@@ -93,14 +93,86 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-html,body {
-    height: 100%;
+
+@font-face {
+    font-family: 'LeagueGothic';
+    src: url('../font/LeagueGothic-Regular-webfont.eot');
+    src: url('../font/LeagueGothic-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/LeagueGothic-Regular-webfont.woff') format('woff'),
+    url('../font/LeagueGothic-Regular-webfont.ttf') format('truetype'),
+    url('../font/LeagueGothic-Regular-webfont.svg#LeagueGothicRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
+
+@font-face {
+    font-family: 'LeagueGothicItalic';
+    src: url('../font/LeagueGothic-Italic-webfont.eot');
+    src: url('../font/LeagueGothic-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/LeagueGothic-Italic-webfont.woff') format('woff'),
+    url('../font/LeagueGothic-Italic-webfont.ttf') format('truetype'),
+    url('../font/LeagueGothic-Italic-webfont.svg#LeagueGothicItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LeagueGothicCondensedRegular';
+    src: url('../font/LeagueGothic-CondensedRegular-webfont.eot');
+    src: url('../font/LeagueGothic-CondensedRegular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/LeagueGothic-CondensedRegular-webfont.woff') format('woff'),
+    url('../font/LeagueGothic-CondensedRegular-webfont.ttf') format('truetype'),
+    url('../font/LeagueGothic-CondensedRegular-webfont.svg#LeagueGothicCondensedRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'LeagueGothicCondensedItalic';
+    src: url('../font/LeagueGothic-CondensedItalic-webfont.eot');
+    src: url('../font/LeagueGothic-CondensedItalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/LeagueGothic-CondensedItalic-webfont.woff') format('woff'),
+    url('../font/LeagueGothic-CondensedItalic-webfont.ttf') format('truetype'),
+    url('../font/LeagueGothic-CondensedItalic-webfont.svg#LeagueGothicCondensedItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html{height:100%;}
 
 body {
     width:100%;
+    min-height: 100%;
     background: #f8d65d url('../img/background-texture.png');
+    font-family: "Helvetica Neue", "Helvetica", Arial;
     color: #493b35;
+}
+
+header {
+    background: #493b35;
+    height: 40px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.5);
+}
+
+header nav ul {
+    float: right;
+    margin: 8px 0;
+}
+
+header nav li {
+    float: left;
+    margin-right: 30px;
+}
+
+header nav li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
 }
 
 #container {
@@ -110,7 +182,26 @@ body {
     background: url('../img/halo.png') no-repeat center center;
 }
 
+.login {
+    text-align: center;
+}
 
+h1 {
+    font-family: LeagueGothic;
+    text-shadow: 0 3px 2px rgba(0,0,0,0.2);
+    font-size: 72px;
+    margin-bottom: 20px;
+}
+
+.login p {
+    font-size: 12px;
+    margin-bottom: 26px;
+    font-weight: bold;
+}
+
+.login #container {
+    padding-top: 12%;
+}
 
 
 

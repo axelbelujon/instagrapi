@@ -1,7 +1,13 @@
 {% extends "AkuInstaBundle::layout.html.twig" %}
 
+{% block bodyclass %}login{% endblock %}
+
 {% block content %}
 
+    <h1>instagrApi</h1>
 
+    <p>A test application developped with Symfony2</p>
+
+    {{ instagram_signin_btn(asset('bundles/akuinsta/img/signin-btn.png')) }}
 
 {% endblock %}

@@ -19,11 +19,24 @@
     -->
     <parameters>
         <parameter key="aku.instagram.class">Aku\Bundle\InstaBundle\Service\Instagram</parameter>
+        <parameter key="aku.client.class">Aku\Bundle\InstaBundle\Service\HttpClient</parameter>
     </parameters>
 
     <services>
         <service id="aku.instagram" class="%aku.instagram.class%">
+            <argument type="service" id="aku.client"></argument>
+            <argument type="string">%aku_insta.app_id%</argument>
+            <argument type="string">%aku_insta.app_secret%</argument>
+            <argument type="string">%aku_insta.redirect_uri%</argument>
+        </service>
 
+        <service id="aku.client" class="%aku.client.class%">
+
+        </service>
+
+        <service id="aku.twig.insta_extension" class="Aku\Bundle\InstaBundle\Twig\Extension\InstaExtension">
+            <tag name="twig.extension" />
+            <argument type="service" id="aku.instagram"></argument>
         </service>
     </services>
 </container>

@@ -24,5 +24,20 @@ class AkuInstaExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+        $exposed = array('app_id', 'app_secret', 'redirect_uri');
+
+        foreach($exposed as $exp) {
+            if (!isset($config[$exp])) {
+                throw new \InvalidArgumentException(
+                    'The "'.$exp.'" option must be set'
+                );
+            }
+
+            $container->setParameter(
+                'aku_insta.' . $exp,
+                $config[$exp]
+            );
+        }
     }
 }

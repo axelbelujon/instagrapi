@@ -9,3 +9,4 @@ It is currently under development and won't be use for any commercial purpose, o
 Requirements
 ------------
 Symfony2
+curl extension for PHP
