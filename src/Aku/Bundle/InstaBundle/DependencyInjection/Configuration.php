@@ -26,6 +26,7 @@ class Configuration implements ConfigurationInterface
         $rootNode->children()
             ->scalarNode('app_id')->isRequired()->end()
             ->scalarNode('app_secret')->isRequired()->end()
+            ->scalarNode('redirect_uri')->isRequired()->end()
             ->end()
         ;
 

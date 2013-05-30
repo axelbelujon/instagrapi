@@ -67,3 +67,4 @@ swiftmailer:
 aku_insta:
     app_id: %instagram_app_id%
     app_secret: %instagram_app_secret%
+    redirect_uri: %instagram_redirect_uri%
