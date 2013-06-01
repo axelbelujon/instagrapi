@@ -38,5 +38,18 @@
             <tag name="twig.extension" />
             <argument type="service" id="aku.instagram"></argument>
         </service>
+
+        <!-- provider -->
+        <service id="instagram.security.authentication.provider"
+                 class="Aku\Bundle\InstaBundle\Security\Authentication\Provider\InstagramProvider" public="false">
+            <argument /> <!-- User Provider -->
+            <argument>%kernel.cache_dir%/security/nonces</argument>
+        </service>
+
+        <service id="instagram.security.authentication.listener"
+                 class="Aku\Bundle\InstaBundle\Security\Firewall\InstagramListener" public="false">
+            <argument type="service" id="security.context"/>
+            <argument type="service" id="security.authentication.manager" />
+        </service>
     </services>
 </container>

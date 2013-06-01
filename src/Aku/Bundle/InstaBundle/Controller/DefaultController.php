@@ -54,7 +54,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/pictures", name="instagrapi_pictures")
+     * @Route("/logged/pictures", name="instagrapi_pictures")
      * @Template()
      */
     public function picturesAction()
