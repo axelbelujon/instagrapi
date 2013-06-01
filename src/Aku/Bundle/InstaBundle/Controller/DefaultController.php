@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="instagrapi_home")
      * @Template()
      */
     public function indexAction()
@@ -24,7 +24,7 @@ class DefaultController extends Controller
     /**
      * Redirect URI from Instagram.
      * If code is set, everything went fine. If not, an error message must be set
-     * @Route("/auth")
+     * @Route("/auth", name="instagrapi_auth")
      */
     public function authAction(Request $request)
     {
@@ -38,7 +38,11 @@ class DefaultController extends Controller
 
             // $access should contain "access_token"
             if(isset($auth->access_token)) {
+                $session = $this->get('session');
+                $session->set('instagram_access_token', $auth->access_token);
+                $session->set('instagram_user', $auth->user);
 
+                return $this->redirect($this->generateUrl('instagrapi_pictures'));
             } else {
                 // @todo : Handle error code and message
             }
@@ -47,5 +51,22 @@ class DefaultController extends Controller
         }
 
         return new Response('');
+    }
+
+    /**
+     * @Route("/pictures", name="instagrapi_pictures")
+     * @Template()
+     */
+    public function picturesAction()
+    {
+        $session = $this->get('session');
+
+        $token = $session->get('instagram_access_token', null);
+
+        if(isset($token)){
+            return array();
+        } else {
+            return $this->redirect($this->generateUrl('instagrapi_home'));
+        }
     }
 }
