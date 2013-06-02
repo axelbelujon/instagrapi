@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table()
  * @ORM\Entity
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var integer
@@ -151,5 +151,25 @@ class User
     public function getInstagramId()
     {
         return $this->instagramId;
+    }
+
+    function getPassword()
+    {
+        return '';
+    }
+
+    function getSalt()
+    {
+        return '';
+    }
+
+    function getRoles()
+    {
+        return array('ROLE_USER', 'ROLE_INSTAGRAM');
+    }
+
+    function eraseCredentials()
+    {
+
     }
 }

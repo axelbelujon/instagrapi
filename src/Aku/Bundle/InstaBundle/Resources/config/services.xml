@@ -20,6 +20,8 @@
     <parameters>
         <parameter key="aku.instagram.class">Aku\Bundle\InstaBundle\Service\Instagram</parameter>
         <parameter key="aku.client.class">Aku\Bundle\InstaBundle\Service\HttpClient</parameter>
+        <parameter key="aku.authentication.success.class">Aku\Bundle\InstaBundle\Security\Authentication\AuthenticationSuccessHandler</parameter>
+        <parameter key="aku.authentication.failure.class">Aku\Bundle\InstaBundle\Security\Authentication\AuthenticationFailureHandler</parameter>
     </parameters>
 
     <services>
@@ -39,6 +41,12 @@
             <argument type="service" id="aku.instagram"></argument>
         </service>
 
+        <service id="aku.authentication.success" class="%aku.authentication.success.class%" public="false">
+        </service>
+
+        <service id="aku.authentication.failure" class="%aku.authentication.failure.class%" public="false">
+        </service>
+
         <!-- provider -->
         <service id="instagram.security.authentication.provider"
                  class="Aku\Bundle\InstaBundle\Security\Authentication\Provider\InstagramProvider" public="false">
@@ -47,9 +55,18 @@
         </service>
 
         <service id="instagram.security.authentication.listener"
-                 class="Aku\Bundle\InstaBundle\Security\Firewall\InstagramListener" public="false">
-            <argument type="service" id="security.context"/>
+                 class="Aku\Bundle\InstaBundle\Security\Firewall\InstagramListener">
+            <tag name="monolog.logger" channel="security" />
+            <argument type="service" id="security.context" />
             <argument type="service" id="security.authentication.manager" />
+            <argument type="service" id="security.authentication.session_strategy" />
+            <argument type="service" id="security.http_utils" />
+            <argument type="string">security.authentication.provider.instagram</argument>
+            <argument type="service" id="aku.authentication.success" on-invalid="null" />
+            <argument type="service" id="aku.authentication.failure" on-invalid="null" />
+            <argument type="collection"></argument>
+            <argument type="service" id="logger" on-invalid="null" />
+            <argument type="service" id="event_dispatcher" on-invalid="null" />
         </service>
     </services>
 </container>

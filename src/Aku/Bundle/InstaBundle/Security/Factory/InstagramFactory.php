@@ -11,6 +11,7 @@ class InstagramFactory implements SecurityFactoryInterface
 {
     public function create(ContainerBuilder $container, $id, $config, $userProvider, $defaultEntryPoint)
     {
+
         $providerId = 'security.authentication.provider.'.$id;
         $container
             ->setDefinition($providerId, new DefinitionDecorator('instagram.security.authentication.provider'))
