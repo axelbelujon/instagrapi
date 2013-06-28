@@ -11,7 +11,8 @@ namespace Aku\Bundle\InstaBundle\Service;
 use Aku\Bundle\InstaBundle\Model\ClientInterface;
 
 class Instagram {
-    const INSTAGRAM_API_URL = "https://api.instagram.com/";
+    const INSTAGRAM_API_URL = "https://api.instagram.com";
+    const INSTAGRAM_API_VERSION = 'v1';
 
     protected $client;
 
@@ -38,7 +39,7 @@ class Instagram {
         //https://api.instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=code
 
         $url = self::INSTAGRAM_API_URL;
-        $url .= 'oauth/authorize/';
+        $url .= '/oauth/authorize/';
         $url .= '?client_id=' . $this->appId;
         $url .= '&redirect_uri=' . $this->redirectUri;
         $url .= '&response_type=code';
@@ -48,7 +49,7 @@ class Instagram {
 
     public function authenticate($code)
     {
-        $authenticateUrl = self::INSTAGRAM_API_URL . 'oauth/access_token';
+        $authenticateUrl = self::INSTAGRAM_API_URL . '/oauth/access_token';
 
         $options = array('data' => array(
             'client_id' => $this->appId,
@@ -59,5 +60,16 @@ class Instagram {
         ));
 
         return $this->client->execute('POST', $authenticateUrl, $options);
+    }
+
+    /**
+     * @todo : put user calls into a separated class
+     */
+    public function getUserFeed($token)
+    {
+        $url = self::INSTAGRAM_API_URL . '/'.self::INSTAGRAM_API_VERSION.'/users/self/feed';
+        $url .= '?access_token=' . $token;
+
+        return json_decode($this->client->execute('GET', $url));
     }
 }

@@ -29,7 +29,6 @@ class HttpClient implements ClientInterface {
                 $fields = $options['data'];
                 curl_setopt($ch, CURLOPT_POST, count($fields));
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($fields));
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 break;
             case 'GET':
             default:
@@ -39,6 +38,7 @@ class HttpClient implements ClientInterface {
         // Get rid of the SSL verification for local tests
         curl_setopt ($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
         $result = curl_exec($ch);
 

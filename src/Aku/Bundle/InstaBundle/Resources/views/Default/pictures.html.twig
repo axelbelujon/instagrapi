@@ -6,6 +6,14 @@
 
     <h1>instagrApi</h1>
 
-    <p>Picture page</p>
+    <ul id="feed-thumbnails">
+    {% for data in feed.data if data.type == 'image' %}
+        <li>
+            <a href="{{ data.link }}" target="_blank">
+                <img src="{{ data.images.thumbnail.url }}" alt="" />
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
 
 {% endblock %}

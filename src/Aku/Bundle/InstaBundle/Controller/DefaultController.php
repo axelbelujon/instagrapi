@@ -63,8 +63,12 @@ class DefaultController extends Controller
 
         $token = $session->get('instagram_access_token', null);
 
+        $instagram = $this->get('aku.instagram');
+
+        $feed = $instagram->getUserFeed($token);
+
         if(isset($token)){
-            return array();
+            return array('feed' => $feed);
         } else {
             return $this->redirect($this->generateUrl('instagrapi_home'));
         }

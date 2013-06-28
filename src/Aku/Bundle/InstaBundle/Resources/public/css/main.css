@@ -203,7 +203,16 @@ h1 {
     padding-top: 12%;
 }
 
+#feed-thumbnails {
+    width: 94%;
+    margin: 3%;
+    padding: 0;
+    list-style: none;
+}
 
+#feed-thumbnails li {
+    float: left;
+}
 
 
 
